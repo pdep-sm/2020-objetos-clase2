@@ -1,0 +1,34 @@
+import example.*
+
+test "bloque de codigo" {
+	const lol = {  "size".size() }
+	assert.equals(4, lol.apply())
+	
+	const conParam = { string => string.size() }
+	assert.equals(4, conParam.apply("size"))
+	
+	const bool = true
+	const criterio = { o1, o2 => bool && o1.combustible() >= o2.combustible()}
+	assert.that(criterio.apply(jeep,jeep))
+	
+}
+
+test "Lista de vehiculos" {
+	const vehiculos = [jeep, apache]
+	assert.equals(2, vehiculos.size())
+}
+
+test "Conjunto de vehiculos" {
+	const vehiculos = #{jeep, apache, apache}
+	assert.equals(2, vehiculos.size())
+}
+
+test "Mapeo de Dobles" {
+	const numbers = [1,2,3,4]
+	assert.equals([2,4,6,8], numbers.map{ n => n * 2})
+}
+
+test "Filtrado de Pares" {
+	const numbers = [1,2,3,4]
+	assert.equals([2,4], numbers.filter{ n => n.even()})
+}
