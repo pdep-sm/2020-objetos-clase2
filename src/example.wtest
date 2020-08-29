@@ -1,0 +1,51 @@
+import example.*
+
+/*
+ * assert.that( <booleano> )
+ * assert.equals( unObjeto, otroObjeto )
+ */
+ 
+test "Jonny no hizo misiones" {
+	assert.equals(0, jonny.cantidadMisiones())	
+}
+
+test "Jonny hizo 1 misión" {
+	jonny.realizarMision(rescatarRyan)
+	assert.equals(1, jonny.cantidadMisiones())	
+}
+
+test "Jonny hizo 2 misiones" {
+	jonny.realizarMision(rescatarRyan)
+	jonny.realizarMision(rescatarRyan)
+	assert.equals(2, jonny.cantidadMisiones())	
+}
+
+test "Jeep con 100 de combustible" {
+	assert.equals(100, jeep.combustible())	
+}
+
+test "Jeep con 75 luego de Rescatar a Ryan" {
+	jonny.vehiculo(jeep)
+	jonny.realizarMision(rescatarRyan)
+	assert.equals(75, jeep.combustible())
+}
+
+test "Apache sin desgaste" {
+	assert.equals(0, apache.desgasteHelices())	
+}
+
+test "Apache con 50 de desgaste luego de Rescatar a Ryan" {
+	jonny.vehiculo(apache)
+	jonny.realizarMision(rescatarRyan)
+	assert.equals(50, apache.desgasteHelices())
+}
+
+
+test "Dado que cambio el vehiculo el anterior esta igual" {
+	const combustibleInicial = jeep.combustible()
+	jonny.vehiculo(jeep)
+	jonny.vehiculo(apache)
+	jonny.realizarMision(rescatarRyan)
+	assert.equals(combustibleInicial, jeep.combustible())	
+}
+
